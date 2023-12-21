@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Author;
+use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $books = Author::first()->books()->where('id', '>', 150)->get();
+    return view('test', ['books' => $books]);
 });
