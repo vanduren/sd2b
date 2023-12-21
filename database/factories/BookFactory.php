@@ -18,7 +18,6 @@ class BookFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence,
-            'author_id' => random_int(1, 100),
         ];
     }
 }

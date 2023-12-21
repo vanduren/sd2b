@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Author;
+use App\Models\Book;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,5 +25,9 @@ class DatabaseSeeder extends Seeder
             AuthorSeeder::class,
             BookSeeder::class,
         ]);
+        Book::where('id', 1)->first()->authors()->attach(Author::where('id', 1)->first());
+        Book::where('id', 1)->first()->authors()->attach(Author::where('id', 2)->first());
+        Book::where('id', 2)->first()->authors()->attach(Author::where('id', 1)->first());
+        Book::where('id', 3)->first()->authors()->attach(Author::where('id', 2)->first());
     }
 }
